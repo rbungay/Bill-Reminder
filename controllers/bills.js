@@ -9,6 +9,7 @@ const handleError = (res, error) => {
   res.redirect("/");
 };
 
+//directs to home page dashboard
 router.get("/", (req, res) => {
   try {
     res.render("bills/index.ejs");

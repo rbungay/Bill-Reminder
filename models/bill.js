@@ -13,14 +13,17 @@ const billSchema = new mongoose.Schema({
     type: Date,
     min: "2020-01-01",
     max: "2030-12-31",
+    required: true,
   },
   status: {
     type: String,
     enum: ["unpaid", "paid", "overdue"],
+    required: true,
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
+    required: true,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
