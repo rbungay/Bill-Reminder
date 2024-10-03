@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     };
     const bill = new Bill(billData);
     await bill.save();
-    res.redirect("/");
+    res.redirect("/MyBills/New");
   } catch (error) {
     handleError(res, error);
   }
