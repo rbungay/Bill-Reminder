@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Bill</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Create a New Bill</h1>
+
+    <form action="/MyBills" method="POST">
+      <div>
+        <label for="name">Bill Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          required
+          min="0"
+          step="0.01"
+        />
+      </div>
+      <div>
+        <label for="duedate">Due Date</label>
+        <input
+          type="date"
+          id="duedate"
+          name="duedate"
+          required
+          min="2020-01-01"
+          max="2030-12-31"
+        />
+      </div>
+      <div>
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+          <option value="unpaid">Unpaid</option>
+          <option value="paid">Paid</option>
+          <option value="overdue">Overdue</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+          <option value="66feffb8c5e15db56e397fce">Credit Card</option>
+          <option value="66ff0004c5e15db56e397fd0">Groceries</option>
+          <option value="66ff002fc5e15db56e397fd1">Insurance</option>
+          <option value="66ff0041c5e15db56e397fd2">Internet/Cable</option>
+          <option value="66ff0051c5e15db56e397fd3">Loan</option>
+          <option value="66ff00ee1373d0f822c10e80">Phone</option>
+          <option value="66ff01081373d0f822c10e81">Rent/Mortgage</option>
+          <option value="66ff01181373d0f822c10e82">Subscriptions</option>
+          <option value="66ff012e1373d0f822c10e83">Transportation</option>
+          <option value="66ff013d1373d0f822c10e84">Utilities</option>
+          <option value="66ff01591373d0f822c10e85">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="submit">Create Bill</button>
+      </div>
+    </form>
+  </body>
+</html>
