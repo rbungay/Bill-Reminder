@@ -45,4 +45,13 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/view-all", async (req, res) => {
+  try {
+    const billData = await Bill.find({}).populate("category");
+    res.render("bills/view.ejs", { billData });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 export default router;

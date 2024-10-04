@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Bills</title>
+  </head>
+  <body>
+    <h1>All Bills</h1>
+
+    <% if (billData.length > 0) { %>
+    <ul>
+      <% billData.forEach(bill => { %>
+      <li>
+        <h2><%= bill.name %></h2>
+        <p><strong>Amount:</strong> $<%= bill.amount %></p>
+        <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
+        <p><strong>Status:</strong> <%= bill.status %></p>
+        <p>
+          <strong>Category:</strong> <%= bill.category.name %>
+          <!-- Assuming you've populated category.name in your controller -->
+        </p>
+      </li>
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p>No bills found.</p>
+    <% } %>
+  </body>
+</html>
