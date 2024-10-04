@@ -98,4 +98,21 @@ router.put("/:billId", async (req, res) => {
   }
 });
 
+//to delete in edit page
+router.delete("/:billId", async (req, res) => {
+  try {
+    const bill = await BillModel.findById(req.params.billId).populate(
+      "category"
+    );
+    if (bill.owner.toString() === req.session.user._id) {
+      await BillModel.findByIdAndDelete(bill);
+      res.redirect("/MyBills/view-all");
+    } else {
+      res.redirect("/MyBills");
+    }
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 export default router;

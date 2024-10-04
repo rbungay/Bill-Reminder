@@ -14,6 +14,9 @@
       <p><strong>Status:</strong> <%= bill.status %></p>
       <p><strong>Category:</strong> <%= bill.category.name %></p>
       <a href="/MyBills/<%= bill._id%>/edit"><button>Modify Bill</button></a>
+      <form action="/MyBills/<%= bill._id %>?_method=Delete" method="POST">
+        <button type="submit">Delete Bill</button>
+      </form>
     </div>
   </body>
 </html>
