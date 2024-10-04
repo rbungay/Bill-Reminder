@@ -1,11 +1,14 @@
 <nav>
   <% if (user) { %>
 
+  <a href="/MyBills">Home</a>
+  <a href="/MyBills"><strong>BillBuddy</strong></a>
   <a href="/auth/sign-out">Sign out</a>
 
   <% } else { %>
 
   <a href="/auth/sign-up">Sign up</a>
+  <a href="/MyBills"><strong>BillBuddy</strong></a>
   <a href="/auth/sign-in">Sign in</a>
   <% } %>
 </nav>
