@@ -13,6 +13,7 @@
       <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
       <p><strong>Status:</strong> <%= bill.status %></p>
       <p><strong>Category:</strong> <%= bill.category.name %></p>
+      <a href="/MyBills/<%= bill._id%>/edit"><button>Modify Bill</button></a>
     </div>
   </body>
 </html>

@@ -71,4 +71,17 @@ router.get("/:billId", async (req, res) => {
   }
 });
 
+router.get("/:billId/edit", async (req, res) => {
+  try {
+    const bill = await BillModel.findById(req.params.billId).populate(
+      "category"
+    );
+    if (bill.owner.toString() == req.session.user._id) {
+      res.render("bills/edit.ejs", { bill });
+    }
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 export default router;
