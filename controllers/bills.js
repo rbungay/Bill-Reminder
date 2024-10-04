@@ -71,6 +71,7 @@ router.get("/:billId", async (req, res) => {
   }
 });
 
+// get into the edit page.
 router.get("/:billId/edit", async (req, res) => {
   try {
     const bill = await BillModel.findById(req.params.billId).populate(
@@ -78,6 +79,19 @@ router.get("/:billId/edit", async (req, res) => {
     );
     if (bill.owner.toString() == req.session.user._id) {
       res.render("bills/edit.ejs", { bill });
+    }
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+// updated method in the edit page
+router.put("/:billId", async (req, res) => {
+  try {
+    const bill = await BillModel.findById(req.params.billId);
+    if (bill.owner.toString() == req.session.user._id) {
+      await BillModel.findByIdAndUpdate(bill, req.body);
+      res.redirect(`/MyBills/${req.params.billId}`);
     }
   } catch (error) {
     handleError(res, error);
