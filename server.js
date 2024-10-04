@@ -6,8 +6,8 @@ import mongoose from "mongoose";
 import methodOverride from "method-override";
 import morgan from "morgan";
 import session from "express-session";
-import isSignedIn from "./middleware/is-signed-in.js";
-import passUserToView from "./middleware/pass-user-to-view.js";
+import { isSignedIn } from "./middleware/is-signed-in.js";
+import { passUserToView } from "./middleware/pass-user-to-view.js";
 
 import authController from "./controllers/auth.js";
 import billsController from "./controllers/bills.js";

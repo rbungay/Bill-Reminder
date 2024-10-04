@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import Bill from "../models/bill.js";
+import { BillModel } from "../models/bill.js";
 import Category from "../models/category.js";
 
 // Need to add Const of the MODELS that will be built later here
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
       ...req.body,
       owner: req.session.user._id,
     };
-    const bill = new Bill(billData);
+    const bill = new BillModel(billData);
     await bill.save();
     res.redirect("/MyBills/New");
   } catch (error) {
@@ -47,7 +47,7 @@ router.post("/", async (req, res) => {
 
 router.get("/view-all", async (req, res) => {
   try {
-    const billData = await Bill.find({}).populate("category");
+    const billData = await BillModel.find({}).populate("category");
     res.render("bills/view.ejs", { billData });
   } catch (error) {
     handleError(res, error);
