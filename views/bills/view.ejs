@@ -6,20 +6,18 @@
     <title>All Bills</title>
   </head>
   <body>
+    <nav><%- include('../partials/_navbar.ejs') %></nav>
     <h1>All Bills</h1>
 
-    <% if (billData.length > 0) { %>
+    <% if (bills.length > 0) { %>
     <ul>
-      <% billData.forEach(bill => { %>
+      <% bills.forEach(bill => { %>
       <li>
-        <h2><%= bill.name %></h2>
+        <h2><a href="/MyBills/<%=bill._id%>"><%= bill.name %></h2></a>
         <p><strong>Amount:</strong> $<%= bill.amount %></p>
         <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
         <p><strong>Status:</strong> <%= bill.status %></p>
-        <p>
-          <strong>Category:</strong> <%= bill.category.name %>
-          <!-- Assuming you've populated category.name in your controller -->
-        </p>
+        <p><strong>Category:</strong> <%= bill.category.name %></p>
       </li>
       <% }) %>
     </ul>

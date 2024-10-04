@@ -45,10 +45,27 @@ router.post("/", async (req, res) => {
   }
 });
 
+// get into a view all bill page
 router.get("/view-all", async (req, res) => {
   try {
-    const billData = await BillModel.find({}).populate("category");
-    res.render("bills/view.ejs", { billData });
+    const bills = await BillModel.find({}).populate("category");
+    res.render("bills/view.ejs", { bills });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+// get into specific id bill page
+router.get("/:billId", async (req, res) => {
+  try {
+    const bill = await BillModel.findById(req.params.billId).populate(
+      "category"
+    );
+    if (bill.owner.toString() == req.session.user._id) {
+      res.render("bills/show.ejs", { bill });
+    } else {
+      res.redirect("/");
+    }
   } catch (error) {
     handleError(res, error);
   }

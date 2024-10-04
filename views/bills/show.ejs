@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav><%- include('../partials/_navbar.ejs') %></nav>
+    <div>
+      <h2><%= bill.name %></h2>
+      <p><strong>Amount:</strong> $<%= bill.amount %></p>
+      <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
+      <p><strong>Status:</strong> <%= bill.status %></p>
+      <p><strong>Category:</strong> <%= bill.category.name %></p>
+    </div>
+  </body>
+</html>
