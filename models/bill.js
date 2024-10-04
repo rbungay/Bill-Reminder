@@ -31,4 +31,4 @@ const billSchema = new mongoose.Schema({
   },
 });
 
-export const BillModel = mongoose.model("Bill", billSchema);
+export default mongoose.model("Bill", billSchema);
