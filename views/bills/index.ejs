@@ -9,11 +9,13 @@
   <body>
     <div><%- include('../partials/_navbar.ejs') %></div>
     <h1>My DashBoard</h1>
-    <div>
-      <p>
-        Total Accumulated Debt: $<%= totalAmount %> <br /><br />
-        Total # of Bills: <%= totalQuantity %> <br /><br />
-      </p>
+    <div class="totals-buttons">
+      <button class="total-button">
+        Total Accumulated Debt: $<%= totalAmount %>
+      </button>
+      <button class="total-button">
+        Total # of Bills: <%= totalQuantity %>
+      </button>
     </div>
 
     <div class="bills-container">

@@ -107,3 +107,26 @@ p {
   margin: 20px 0;
   color: #666;
 }
+
+.totals-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* Adjust as needed for spacing */
+}
+
+.total-button {
+  background-color: #007bff; /* Button color */
+  color: #fff; /* Text color */
+  padding: 15px 30px; /* Padding for button */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1.5rem; /* Font size for big letters */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 10px; /* Space between buttons */
+}
+
+.total-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
