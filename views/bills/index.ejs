@@ -10,10 +10,10 @@
     <h1>My DashBoard</h1>
     <div>
       <p>
-        $<%= total %> This is the amount that's total debt This is where i'm
-        going to insert Total Debt and # of Bills. Should be two buttons that
-        will lead to the views page
-        <a href="/MyBills/view-all"><button>VIEW ALL</button></a>
+        Total Accumulated Debt: $<%= totalAmount %> <br /><br />
+
+        Total # of Bills: <%= totalQuantity %> <br /><br />
+
         <br />
         <br />
         <br />
@@ -27,6 +27,8 @@
         <br />
         <br />
         <br />
+
+        <a href="/MyBills/view-all"><button>VIEW ALL</button></a>
       </p>
     </div>
 

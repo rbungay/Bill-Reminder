@@ -16,14 +16,21 @@ const handleError = (res, error) => {
 router.get("/", async (req, res) => {
   try {
     const bills = await Bill.find({ owner: req.session.user._id });
-    const total = bills.reduce((acc, bill) => {
+    const totalAmount = bills.reduce((acc, bill) => {
       if (bill.status === "overdue" || bill.status === "unpaid") {
         return acc + bill.amount;
       }
 
       return acc;
     }, 0);
-    res.render("bills/index.ejs", { bills, total });
+    const totalQuantity = bills.reduce((acc, bill) => {
+      if (bill.status === "overdue" || bill.status === "unpaid") {
+        return acc + 1;
+      }
+      return acc;
+    }, 0);
+
+    res.render("bills/index.ejs", { bills, totalAmount, totalQuantity });
   } catch (error) {
     handleError(res, error);
   }
