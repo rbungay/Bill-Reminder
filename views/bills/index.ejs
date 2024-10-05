@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Bills</title>
+    <link rel="stylesheet" href="/dashboard.css" />
   </head>
   <body>
     <div><%- include('../partials/_navbar.ejs') %></div>
@@ -11,39 +12,78 @@
     <div>
       <p>
         Total Accumulated Debt: $<%= totalAmount %> <br /><br />
-
         Total # of Bills: <%= totalQuantity %> <br /><br />
-
-        <br />
-        <br />
-        <br />
       </p>
     </div>
 
-    <div>
-      <p>
-        This is another division where it's just going to show all bills that
-        are due today
-        <br />
-        <br />
-        <br />
-
+    <div class="bills-container">
+      <div class="bill-section">
+        <h2>Unpaid Bills</h2>
+        <% if (unpaidBills.length > 0) { %>
+        <ul>
+          <% unpaidBills.forEach(bill => { %>
+          <li>
+            <h3><a href="/MyBills/<%= bill._id %>"><%= bill.name %></a></h3>
+            <p><strong>Amount:</strong> $<%= bill.amount %></p>
+            <p>
+              <strong>Due Date:</strong> <%= new
+              Date(bill.duedate).toDateString() %>
+            </p>
+          </li>
+          <% }) %>
+        </ul>
+        <% } else { %>
+        <p>No unpaid bills found.</p>
+        <% } %>
         <a href="/MyBills/view-all"><button>VIEW ALL</button></a>
-      </p>
+      </div>
+
+      <div class="bill-section">
+        <h2>Overdue Bills</h2>
+        <% if (overdueBills.length > 0) { %>
+        <ul>
+          <% overdueBills.forEach(bill => { %>
+          <li>
+            <h3><a href="/MyBills/<%= bill._id %>"><%= bill.name %></a></h3>
+            <p><strong>Amount:</strong> $<%= bill.amount %></p>
+            <p>
+              <strong>Due Date:</strong> <%= new
+              Date(bill.duedate).toDateString() %>
+            </p>
+          </li>
+          <% }) %>
+        </ul>
+        <% } else { %>
+        <p>No overdue bills found.</p>
+        <% } %>
+        <a href="/MyBills/view-all"><button>VIEW ALL</button></a>
+      </div>
+
+      <div class="bill-section">
+        <h2>Completed Bills</h2>
+        <% if (completedBills.length > 0) { %>
+        <ul>
+          <% completedBills.forEach(bill => { %>
+          <li>
+            <h3><a href="/MyBills/<%= bill._id %>"><%= bill.name %></a></h3>
+            <p><strong>Amount:</strong> $<%= bill.amount %></p>
+            <p>
+              <strong>Due Date:</strong> <%= new
+              Date(bill.duedate).toDateString() %>
+            </p>
+          </li>
+          <% }) %>
+        </ul>
+        <% } else { %>
+        <p>No completed bills found.</p>
+        <% } %>
+        <a href="/MyBills/view-all"><button>VIEW ALL</button></a>
+      </div>
     </div>
 
-    <div>
-      <p>
-        In this div, there will be two sections of just completed bills and
-        unpaid bills
-        <br />
-        <br />
-        <br />
-      </p>
-    </div>
     <div>
       <a href="/MyBills/new">
-        <button>This is the button that will just be to add a new bill</button>
+        <button>Add a New Bill</button>
       </a>
     </div>
   </body>

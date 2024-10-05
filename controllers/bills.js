@@ -15,7 +15,9 @@ const handleError = (res, error) => {
 //directs to home page dashboard
 router.get("/", async (req, res) => {
   try {
-    const bills = await Bill.find({ owner: req.session.user._id });
+    const bills = await Bill.find({ owner: req.session.user._id }).populate(
+      "category"
+    );
     const totalAmount = bills.reduce((acc, bill) => {
       if (bill.status === "overdue" || bill.status === "unpaid") {
         return acc + bill.amount;
@@ -30,7 +32,29 @@ router.get("/", async (req, res) => {
       return acc;
     }, 0);
 
-    res.render("bills/index.ejs", { bills, totalAmount, totalQuantity });
+    const unpaidBills = bills
+      .filter((bill) => bill.status === "unpaid")
+      .sort((a, b) => a.duedate - b.duedate)
+      .slice(0, 5);
+
+    const overdueBills = bills
+      .filter((bill) => bill.status === "overdue")
+      .sort((a, b) => a.duedate - b.duedate)
+      .slice(0, 5);
+
+    const completedBills = bills
+      .filter((bill) => bill.status === "paid")
+      .sort((a, b) => a.duedate - b.duedate)
+      .slice(0, 5);
+
+    res.render("bills/index.ejs", {
+      bills,
+      totalAmount,
+      totalQuantity,
+      unpaidBills,
+      overdueBills,
+      completedBills,
+    });
   } catch (error) {
     handleError(res, error);
   }
