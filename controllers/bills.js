@@ -94,9 +94,30 @@ router.get("/view-all", async (req, res) => {
   }
 });
 
+//goes to a view-all page with completed
 router.get("/view-all/completed", async (req, res) => {
   try {
     const bills = await Bill.find({ status: "paid" }).populate("category");
+    res.render("bills/view.ejs", { bills });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+//goes to view-all page of unpaid
+router.get("/view-all/unpaid", async (req, res) => {
+  try {
+    const bills = await Bill.find({ status: "unpaid" }).populate("category");
+    res.render("bills/view.ejs", { bills });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+//goes to view-all page of overdue
+router.get("/view-all/overdue", async (req, res) => {
+  try {
+    const bills = await Bill.find({ status: "overdue" }).populate("category");
     res.render("bills/view.ejs", { bills });
   } catch (error) {
     handleError(res, error);

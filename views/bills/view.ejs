@@ -4,23 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Bills</title>
+    <link rel="stylesheet" href="/view.css" />
   </head>
   <body>
-    <div><%- include('../partials/_navbar.ejs') %></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/logout">Sign out</a>
+    </nav>
+
     <h1>All Bills</h1>
 
     <% if (bills.length > 0) { %>
-    <ul>
-      <% bills.forEach(bill => { %>
-      <li>
-        <h2><a href="/MyBills/<%=bill._id%>"><%= bill.name %></h2></a>
-        <p><strong>Amount:</strong> $<%= bill.amount %></p>
-        <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
-        <p><strong>Status:</strong> <%= bill.status %></p>
-        <p><strong>Category:</strong> <%= bill.category.name %></p>
-      </li>
-      <% }) %>
-    </ul>
+    <div class="bills-container">
+      <table class="bills-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Due Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% bills.forEach(bill => { %>
+          <tr>
+            <td><a href="/MyBills/<%= bill._id %>"><%= bill.name %></a></td>
+            <td><%= bill.duedate.toDateString() %></td>
+            <td>$<%= bill.amount %></td>
+            <td><%= bill.status %></td>
+            <td><%= bill.category.name %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
     <% } else { %>
     <p>No bills found.</p>
     <% } %>
