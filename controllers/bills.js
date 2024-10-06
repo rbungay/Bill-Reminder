@@ -94,6 +94,15 @@ router.get("/view-all", async (req, res) => {
   }
 });
 
+router.get("/view-all/completed", async (req, res) => {
+  try {
+    const bills = await Bill.find({ status: "paid" }).populate("category");
+    res.render("bills/view.ejs", { bills });
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 // get into specific id bill page
 router.get("/:billId", async (req, res) => {
   try {
