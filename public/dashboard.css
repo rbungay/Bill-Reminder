@@ -116,8 +116,8 @@ p {
 }
 
 .total-button {
-  background-color: #007bff; /* Button color */
-  color: #fff; /* Text color */
+  background-color: #333; /* Dark background color */
+  color: #fff; /* White text color */
   padding: 15px 30px; /* Padding for button */
   border: none;
   border-radius: 5px; /* Rounded corners */
@@ -128,5 +128,27 @@ p {
 }
 
 .total-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+  background-color: #555; /* Darker color on hover */
+}
+
+.bill-button-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vh;
+}
+
+.bill-button-section button {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bill-button-section button:hover {
+  background-color: #555;
 }

@@ -10,12 +10,16 @@
     <div><%- include('../partials/_navbar.ejs') %></div>
     <h1>My DashBoard</h1>
     <div class="totals-buttons">
-      <button class="total-button">
-        Total Accumulated Debt: $<%= totalAmount %>
-      </button>
-      <button class="total-button">
-        Total # of Bills: <%= totalQuantity %>
-      </button>
+      <a href="/MyBills/view-all">
+        <button class="total-button">
+          Total Accumulated Debt: $<%= totalAmount %>
+        </button></a
+      >
+      <a href="/MyBills/view-all">
+        <button class="total-button">
+          Total # of Bills: <%= totalQuantity %>
+        </button>
+      </a>
     </div>
 
     <div class="bills-container">
@@ -82,8 +86,7 @@
         <a href="/MyBills/view-all"><button>VIEW ALL</button></a>
       </div>
     </div>
-
-    <div>
+    <div class="bill-button-section">
       <a href="/MyBills/new">
         <button>Add a New Bill</button>
       </a>

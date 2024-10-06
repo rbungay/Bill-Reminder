@@ -8,6 +8,7 @@ import morgan from "morgan";
 import session from "express-session";
 import { isSignedIn } from "./middleware/is-signed-in.js";
 import { passUserToView } from "./middleware/pass-user-to-view.js";
+import MongoStore from "connect-mongo";
 
 import authController from "./controllers/auth.js";
 import billsController from "./controllers/bills.js";
@@ -27,6 +28,10 @@ app.use(express.static("public"));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+      collectionName: "sessions",
+    }),
     resave: false,
     saveUninitialized: true,
   })
