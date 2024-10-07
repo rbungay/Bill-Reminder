@@ -30,7 +30,7 @@
           <% bills.forEach(bill => { %>
           <tr>
             <td><a href="/MyBills/<%= bill._id %>"><%= bill.name %></a></td>
-            <td><%= bill.duedate.toDateString() %></td>
+            <td><%= bill.duedate.toISOString().slice(0,10) %></td>
             <td>$<%= bill.amount %></td>
             <td><%= bill.status %></td>
             <td><%= bill.category.name %></td>

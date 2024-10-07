@@ -12,7 +12,9 @@
     <div class="bill-container">
       <h2 class="bill-name"><%= bill.name %></h2>
       <p><strong>Amount:</strong> $<%= bill.amount %></p>
-      <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
+      <p>
+        <strong>Due Date:</strong> <%= bill.duedate.toISOString().slice(0,10) %>
+      </p>
       <p><strong>Status:</strong> <%= bill.status %></p>
       <p><strong>Category:</strong> <%= bill.category.name %></p>
 
