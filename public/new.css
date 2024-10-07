@@ -98,3 +98,15 @@ button.submit-button {
 button.submit-button:hover {
   background-color: #555;
 }
+
+/* Hide the spinner for Chrome, Safari, and Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the spinner for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

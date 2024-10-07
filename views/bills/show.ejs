@@ -3,20 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Bill Details</title>
+    <link rel="stylesheet" href="/show.css" />
   </head>
   <body>
     <div><%- include('../partials/_navbar.ejs') %></div>
-    <div>
-      <h2><%= bill.name %></h2>
+
+    <div class="bill-container">
+      <h2 class="bill-name"><%= bill.name %></h2>
       <p><strong>Amount:</strong> $<%= bill.amount %></p>
       <p><strong>Due Date:</strong> <%= bill.duedate.toDateString() %></p>
       <p><strong>Status:</strong> <%= bill.status %></p>
       <p><strong>Category:</strong> <%= bill.category.name %></p>
-      <a href="/MyBills/<%= bill._id%>/edit"><button>Modify Bill</button></a>
-      <form action="/MyBills/<%= bill._id %>?_method=Delete" method="POST">
-        <button type="submit">Delete Bill</button>
-      </form>
+
+      <div class="button-container">
+        <a href="/MyBills/<%= bill._id %>/edit" class="edit-button"
+          >Modify Bill</a
+        >
+        <form action="/MyBills/<%= bill._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="delete-button">Delete Bill</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
