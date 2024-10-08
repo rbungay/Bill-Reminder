@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon build/server.js",
+    "start": "tsx watch server.ts",
     "start:production": "node build/server.js",
-    "tsc:dev": "npx tsc --watch",
+    "tsc:watch": "npx tsc --watch",
+    "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -32,6 +33,7 @@
     "@types/method-override": "^0.0.35",
     "@types/mongoose": "^5.11.96",
     "@types/morgan": "^1.9.9",
-    "@types/node": "^22.7.4"
+    "@types/node": "^22.7.4",
+    "tsx": "^4.19.1"
   }
 }
