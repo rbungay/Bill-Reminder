@@ -11,3 +11,5 @@ Build a dockerfile.
 
 1. `npm run build`
 2. `npm run start:production`
+
+need to leran how to start a tsconfig.json file.
