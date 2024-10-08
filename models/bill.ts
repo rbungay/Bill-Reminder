@@ -5,7 +5,7 @@ import mongoose, { Document, Schema, Model } from "mongoose";
 export interface IBill extends Document {
   name: string;
   amount: number;
-  dueDate: Date;
+  duedate: Date;
   status: "unpaid" | "paid" | "overdue";
   category: mongoose.Types.ObjectId;
   owner?: mongoose.Types.ObjectId;
@@ -21,7 +21,7 @@ const billSchema: Schema<IBill> = new Schema<IBill>({
     type: Number,
     required: true,
   },
-  dueDate: {
+  duedate: {
     type: Date,
     min: new Date("2020-01-01"),
     max: new Date("2030-12-31"),

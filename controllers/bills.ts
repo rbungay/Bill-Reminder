@@ -1,12 +1,13 @@
 import express from "express";
 const router = express.Router();
 
-import Bill from "../models/bill.js";
-import Category from "../models/category.js";
+import { Bill } from "../models/bill.js";
+import { Category } from "../models/category.js";
 
 // Need to add Const of the MODELS that will be built later here
 
 //added helper function of catch error to keep code try
+// @ts-ignore
 const handleError = (res, error) => {
   console.log(error);
   res.redirect("/");
@@ -15,9 +16,13 @@ const handleError = (res, error) => {
 //directs to home page dashboard
 router.get("/", async (req, res) => {
   try {
+    // @ts-ignore
     const bills = await Bill.find({ owner: req.session.user._id }).populate(
       "category"
     );
+    // .sort({
+    //   duedate: "asc"
+    // })
     const totalAmount = bills.reduce((acc, bill) => {
       if (bill.status === "overdue" || bill.status === "unpaid") {
         return acc + bill.amount;
@@ -34,16 +39,19 @@ router.get("/", async (req, res) => {
 
     const unpaidBills = bills
       .filter((bill) => bill.status === "unpaid")
+      // @ts-ignore
       .sort((a, b) => a.duedate - b.duedate)
       .slice(0, 5);
 
     const overdueBills = bills
       .filter((bill) => bill.status === "overdue")
+      // @ts-ignore
       .sort((a, b) => a.duedate - b.duedate)
       .slice(0, 5);
 
     const completedBills = bills
       .filter((bill) => bill.status === "paid")
+      // @ts-ignore
       .sort((a, b) => a.duedate - b.duedate)
       .slice(0, 5);
 
@@ -74,6 +82,7 @@ router.post("/", async (req, res) => {
   try {
     const billData = {
       ...req.body,
+      // @ts-ignore
       owner: req.session.user._id,
     };
     const bill = new Bill(billData);
@@ -128,6 +137,7 @@ router.get("/view-all/overdue", async (req, res) => {
 router.get("/:billId", async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.billId).populate("category");
+    // @ts-ignore
     if (bill.owner.toString() == req.session.user._id) {
       res.render("bills/show.ejs", { bill });
     } else {
@@ -142,6 +152,7 @@ router.get("/:billId", async (req, res) => {
 router.get("/:billId/edit", async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.billId).populate("category");
+    // @ts-ignore
     if (bill.owner.toString() == req.session.user._id) {
       res.render("bills/edit.ejs", { bill });
     }
@@ -154,6 +165,7 @@ router.get("/:billId/edit", async (req, res) => {
 router.put("/:billId", async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.billId);
+    // @ts-ignore
     if (bill.owner.toString() == req.session.user._id) {
       await Bill.findByIdAndUpdate(bill, req.body);
       res.redirect(`/MyBills/${req.params.billId}`);
@@ -167,6 +179,7 @@ router.put("/:billId", async (req, res) => {
 router.delete("/:billId", async (req, res) => {
   try {
     const bill = await Bill.findById(req.params.billId).populate("category");
+    // @ts-ignore
     if (bill.owner.toString() === req.session.user._id) {
       await Bill.findByIdAndDelete(bill);
       res.redirect("/MyBills/view-all");

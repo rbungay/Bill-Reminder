@@ -15,6 +15,14 @@ import billsController from "./controllers/bills.js";
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
+if (!process.env.MONGODB_URI) {
+  throw new Error("Missing process.env.MONGODB_URI");
+}
+
+if (!process.env.SESSION_SECRET) {
+  throw new Error("Missing process.env.SESSION_SECRET");
+}
+
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on("connected", () => {
@@ -40,6 +48,7 @@ app.use(
 app.use(passUserToView);
 app.get("/", (req, res) => {
   res.render("index.ejs", {
+    // @ts-ignore
     user: req.session.user,
   });
 });
