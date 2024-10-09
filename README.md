@@ -34,7 +34,7 @@
 
 1. Clone the repository:
 
-   ```
+   ```bash
    git clone https://github.com/rbungay/Bill-Reminder.git
    ```
 
@@ -43,3 +43,60 @@
    ```bash
    cd Bill-Reminder
    ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Set up your environmental variabls. Create a **.env** file in the root directory and add the following:
+
+   ```makefile
+   MONGODB_URI=<your-mongodb-connection-string>
+   SESSION_SECRET=<your-session-secret>
+   ```
+
+- Replace "<**your-mongodb-connection-string**>" with the MongoDB connection string you are using.
+
+- Replace "<**your-session-secret**>" with a random secret string for your session.
+
+5. Start the application
+
+   ```bash
+   nodemon server.js
+   ```
+
+6. Open your browser and go to **http://localhost:3000** to view the app.
+
+## Usage
+
+- **Create Bill**: Add new bills by specifying a name, amount, due date, status (unpaid, paid, overdue), and category.
+- **View Bills**: View all unpaid, paid, and overdue bills on the dashboard.
+- **Update Bill**: Edit existing bills from the bill management page.
+- **Delete Bill**: Remove bills that are no longer relevant.
+
+## Folder Structure
+
+```plaintext
+BillBuddy/
+
+
+├── middleware/     # Logic to confirm is user is in session.
+├── models/         # Mongoose schemas for the Bill and User models
+├── public/         # Static files - CSS
+├── controllers/    # Route definitions for bill management and user authentication
+├── views/          # EJS templates for rendering pages
+├── .env            # Environment variables
+├── package.json    # Project metadata and dependencies
+└── server.js       # Entry point of the application
+
+```
+
+## Screenshots
+
+1. Dashboard
+
+![BillBuddyDashBoard](/images/BillBuddy-Dashboard.png)
+
+- View a summary of unpaid, paid, and overdue bills.
