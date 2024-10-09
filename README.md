@@ -11,8 +11,6 @@
 - [Folder Structure](#folder-structure)
 - [Screenshots](#screenshots)
 - [Future Improvements](#future-improvements)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -100,3 +98,27 @@ BillBuddy/
 ![BillBuddyDashBoard](/images/BillBuddy-Dashboard.png)
 
 - View a summary of unpaid, paid, and overdue bills.
+
+2. Add New Bill
+
+![AddNewBillUI](/images/AddNewBill.png)
+
+- Form to add a new bill with details like name, amount, due date, and status.
+
+3. Wireframes/Userstories from [Trello](https://trello.com/invite/b/66fdab2b1f08f0d5d4379395/ATTI9ce86102df775ae45b7a80473fdc76a6EBF69F9F/bill-reminder)
+
+![TrelloWireframe](/images/TrelloBoard.png)
+
+## Future Improvements
+
+I have several goals for this project including but not limited to:
+
+- Rewrite the JS in **TypeScript**: I'd like to be able to practice converint my current Javascript files into a typescript for me to allow other users to clearly read coding further.
+
+- Have my code DRY: As this is my first project doing a full CRUD, I find myself rewriting several codes that I believe can be simplified even further.
+
+- **SMS/Email Reminders**: Notify users about upcoming bill due dates via SMS or email.
+
+- **Dashboard Analytics**: Show financial statistics based on paid and unpaid bills.
+
+- Add a **Payment Processor**: Implementing Stripe or another form of payment taker.
