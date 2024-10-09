@@ -48,7 +48,7 @@
    npm install
    ```
 
-4. Set up your environmental variabls. Create a **.env** file in the root directory and add the following:
+4. Set up your environmental variables. Create a **.env** file in the root directory and add the following:
 
    ```makefile
    MONGODB_URI=<your-mongodb-connection-string>
