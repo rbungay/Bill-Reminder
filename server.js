@@ -34,6 +34,7 @@ app.use(
     }),
     resave: false,
     saveUninitialized: true,
+    ...options,
   })
 );
 
